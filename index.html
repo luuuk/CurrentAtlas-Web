@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Current Atlas">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="style.css"><title>Current Atlas</title></head>
+<body><main id="app">
+<div class="mapstage" id="mapstage"><img id="map" alt="Tidal current atlas map"><div id="dot"></div><div id="empty" hidden></div></div>
+<button id="toggle" class="float" aria-label="Toggle controls">⌄</button>
+<section id="panel" class="panel">
+<header><div><strong id="heading">Current Atlas</strong><small id="phase"></small></div><button id="now" class="primary">Now</button></header>
+<div class="timeline"><button id="play" aria-label="Play">▶</button><input id="hour" type="range" min="0" max="23" step="1"><output id="hourlabel">--:00</output></div>
+<label class="date-label">Date &amp; time (Pacific)<input id="datetime" type="datetime-local"></label>
+<div class="toolbar"><select id="region"></select><button id="fav" title="Favorite region">☆</button><button id="guide" title="Region guide">▦</button><button id="gps" title="Use my location">◎</button><span class="spacer"></span><button id="prev" title="Previous hour">◀</button><button id="next" title="Next hour">▶</button></div>
+<div class="tides"><button id="high">↑ Next high tide</button><button id="low">↓ Next low tide</button></div>
+<div id="status" role="status"></div><div class="hint">Pinch to zoom · drag to pan · double-tap to zoom</div>
+</section>
+<div id="guideModal" hidden><button id="closeGuide">✕</button><img src="assets/region_guide.png" alt="Atlas region guide"></div>
+</main><script src="app.js"></script></body></html>

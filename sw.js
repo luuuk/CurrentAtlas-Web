@@ -1,0 +1,4 @@
+const CACHE='current-atlas-v1';
+self.addEventListener('install',e=>e.waitUntil((async()=>{const c=await caches.open(CACHE);await c.addAll(['./','./index.html','./style.css','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/current_table.json','./assets/region_guide.png']);const names=[];for(let r=1;r<=8;r++)for(let m=1;m<=43;m++)names.push(`./assets/region${r}_map${m}.png`);await Promise.all(names.map(async u=>{try{const q=await fetch(u);if(q.ok)await c.put(u,q)}catch(e){}}));})()));
+self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith((async()=>{const hit=await caches.match(e.request);if(hit)return hit;try{const r=await fetch(e.request);if(r.ok&&new URL(e.request.url).origin===location.origin){const c=await caches.open(CACHE);c.put(e.request,r.clone())}return r}catch(err){return hit||Response.error()}})())});
